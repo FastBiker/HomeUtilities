@@ -5,12 +5,54 @@ Console.WriteLine("=====================================");
 Console.WriteLine("Wybierz, za co chcesz wpisać należność");
 
 var gas = new HUGasInFile("Gas");
-var water = new HUGasInFile("Water");
-var electricity = new HUGasInFile("Electrycity");
-var garbage = new HUGasInFile("Garbage");
-var sewage = new HUGasInFile("Sewage");
-var rent = new HUGasInFile("Rent");
-var internet = new HUGasInFile("Internet");
+var water = new HUWaterInFile("Water");
+var electricity = new HUElectricityInFile("Electrycity");
+//var garbage = new HUGarbageInFile("Garbage");
+//var sewage = new HUSewageInFile("Sewage");
+//var rent = new HURentInFile("Rent");
+//var internet = new HUInternetInFile("Internet");
+
+gas.AmountAdded += GasAmountAdded;
+void GasAmountAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową kwotę za gas");
+}
+
+water.AmountAdded += GasAmountAdded;
+void WaterAmountAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową kwotę za wodę");
+}
+
+electricity.AmountAdded += GasAmountAdded;
+void ElectrticityAmountAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową kwotę za prąd");
+}
+
+//garbage.AmountAdded += GasAmountAdded;
+//void GarbageAmountAdded(object sender, EventArgs args)
+//{
+//    Console.WriteLine("Dodano nową kwotę za śmieci");
+//}
+
+//sewage.AmountAdded += GasAmountAdded;
+//void SewageAmountAdded(object sender, EventArgs args)
+//{
+//    Console.WriteLine("Dodano nową kwotę za ścieki");
+//}
+
+//rent.AmountAdded += GasAmountAdded;
+//void RentAmountAdded(object sender, EventArgs args)
+//{
+//    Console.WriteLine("Dodano nową kwotę za czynsz");
+//}
+
+//internet.AmountAdded += GasAmountAdded;
+//void InternetAmountAdded(object sender, EventArgs args)
+//{
+//    Console.WriteLine("Dodano nową kwotę za internet");
+//}
 
 while (true)
 {
@@ -59,54 +101,54 @@ while (true)
                 Console.WriteLine($"Exceptio catched: {e.Message}");
             }
             break;
-        case "Ś":
-            Console.WriteLine("Wprowadź kwotę za śmieci:");
-            var input4 = Console.ReadLine();
-            try
-            {
-                garbage.AddAmount(input4);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
-            break;
-        case "S":
-            Console.WriteLine("Wprowadź kwotę za ścieki:");
-            var input5 = Console.ReadLine();
-            try
-            {
-                sewage.AddAmount(input5);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
-            break;
-        case "C":
-            Console.WriteLine("Wprowadź kwotę za czynsz:");
-            var input6 = Console.ReadLine();
-            try
-            {
-                rent.AddAmount(input6);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
-            break;
-        case "I":
-            Console.WriteLine("Wprowadź kwotę za internet:");
-            var input7 = Console.ReadLine();
-            try
-            {
-                internet.AddAmount(input7);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
-            break;
+        //case "Ś":
+        //    Console.WriteLine("Wprowadź kwotę za śmieci:");
+        //    var input4 = Console.ReadLine();
+        //    try
+        //    {
+        //        garbage.AddAmount(input4);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine($"Exceptio catched: {e.Message}");
+        //    }
+        //    break;
+        //case "S":
+        //    Console.WriteLine("Wprowadź kwotę za ścieki:");
+        //    var input5 = Console.ReadLine();
+        //    try
+        //    {
+        //        sewage.AddAmount(input5);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine($"Exceptio catched: {e.Message}");
+        //    }
+        //    break;
+        //case "C":
+        //    Console.WriteLine("Wprowadź kwotę za czynsz:");
+        //    var input6 = Console.ReadLine();
+        //    try
+        //    {
+        //        rent.AddAmount(input6);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine($"Exceptio catched: {e.Message}");
+        //    }
+        //    break;
+        //case "I":
+        //    Console.WriteLine("Wprowadź kwotę za internet:");
+        //    var input7 = Console.ReadLine();
+        //    try
+        //    {
+        //        internet.AddAmount(input7);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine($"Exceptio catched: {e.Message}");
+        //    }
+        //    break;
         default:
             Console.WriteLine("Wprowadziłeś niewłaściwą literę");
             break;
@@ -213,7 +255,34 @@ while (true)
     //    }
 }
 
-var statistics = gas.GetStatistics();
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"Min: {statistics.Min}");
+Console.WriteLine("Aby zobaczyć statystyki wpisz literę według poniższej instrukcji:");
+Console.WriteLine("G - gaz; W - woda; P - prąd; Ś - śmieci; S - ścieki; C - czynsz; I - internet");
+Console.WriteLine("Wpisz dowolny znak, żeby zakończyć");
+var inputs = Console.ReadLine();
+
+switch(inputs)
+{
+    case "G":
+        var statistics1 = gas.GetStatistics();
+        Console.WriteLine($"Average: {statistics1.Average:N2}");
+        Console.WriteLine($"Max: {statistics1.Max}");
+        Console.WriteLine($"Min: {statistics1.Min}");
+        break;
+    case "W":
+        var statistics2 = water.GetStatistics();
+        Console.WriteLine($"Average: {statistics2.Average:N2}");
+        Console.WriteLine($"Max: {statistics2.Max}");
+        Console.WriteLine($"Min: {statistics2.Min}");
+        break;
+    case "P":
+        var statistics3 = water.GetStatistics();
+        Console.WriteLine($"Average: {statistics3.Average:N2}");
+        Console.WriteLine($"Max: {statistics3.Max}");
+        Console.WriteLine($"Min: {statistics3.Min}");
+        break;
+    default:
+        Console.WriteLine("Zapraszamy ponownie");
+        break;
+}
+
+

@@ -1,28 +1,22 @@
-﻿using System.Net.NetworkInformation;
-
-namespace HomeUtilities
+﻿namespace HomeUtilities
 {
-    public class HUGasInFile : HomeUtilitiesBase
+    public class HUWaterInFile : HomeUtilitiesBase
     {
-        private const string fileName = "amountsGas.txt";
-        public HUGasInFile(string utilities) 
+        private const string fileName = "amountsWater.txt";
+        public HUWaterInFile(string utilities)
             : base(utilities)
         {
         }
 
-        public override event AmountAddedDelegate AmountAdded;     
+        public override event AmountAddedDelegate AmountAdded;
 
         public override void AddAmount(float amount)
         {
-            if(amount >= 0)
+            if (amount >= 0)
             {
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(amount);
-                }
-                if (AmountAdded != null)
-                {
-                    AmountAdded(this, new EventArgs());
                 }
             }
             else
@@ -46,7 +40,7 @@ namespace HomeUtilities
 
         public override void AddAmount(string amount)
         {
-            if(float.TryParse(amount, out float result))
+            if (float.TryParse(amount, out float result))
             {
                 this.AddAmount(result);
             }
@@ -65,7 +59,7 @@ namespace HomeUtilities
         public override void AddAmount(double amount)
         {
             float valueInFloat = (float)amount;
-            this.AddAmount(valueInFloat);   
+            this.AddAmount(valueInFloat);
         }
 
         public override Statistics GetStatistics()
@@ -80,7 +74,7 @@ namespace HomeUtilities
             var amounts = new List<float>();
             if (File.Exists($"{fileName}"))
             {
-                using(var reader = File.OpenText($"{fileName}"))
+                using (var reader = File.OpenText($"{fileName}"))
                 {
                     var line = reader.ReadLine();
                     while (line != null)
@@ -93,11 +87,11 @@ namespace HomeUtilities
             }
             return amounts;
         }
-        private Statistics CountStatistics(List<float> amounts) 
+        private Statistics CountStatistics(List<float> amounts)
         {
             var statistics = new Statistics();
 
-            foreach (var amount in amounts) 
+            foreach (var amount in amounts)
             {
                 statistics.AddAmount(amount);
             }
