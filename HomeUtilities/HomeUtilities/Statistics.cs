@@ -27,7 +27,7 @@
         }
 
         public void AddAmount(float amount)
-        { 
+        {
             this.Sum += amount;
             this.Count++;
             this.Max = Math.Max(this.Max, amount);
