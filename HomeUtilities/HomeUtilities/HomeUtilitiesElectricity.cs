@@ -20,6 +20,10 @@ namespace HomeUtilities
                 {
                     writer.WriteLine(amount);
                 }
+                if (AmountAdded != null)
+                {
+                    AmountAdded(this, new EventArgs());
+                }
             }
             else
             {

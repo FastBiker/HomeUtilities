@@ -1,6 +1,6 @@
 ﻿using HomeUtilities;
 
-Console.WriteLine("Witamy w programie 'Home Utilities'");
+Console.WriteLine("Witamy w programie 'Home Utilities' liczącą koszty za zużyte media");
 Console.WriteLine("=====================================");
 Console.WriteLine("Wybierz, za co chcesz wpisać należność");
 
@@ -18,37 +18,37 @@ void GasAmountAdded(object sender, EventArgs args)
     Console.WriteLine("Dodano nową kwotę za gas");
 }
 
-water.AmountAdded += GasAmountAdded;
+water.AmountAdded += WaterAmountAdded;
 void WaterAmountAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową kwotę za wodę");
 }
 
-electricity.AmountAdded += GasAmountAdded;
+electricity.AmountAdded += ElectrticityAmountAdded;
 void ElectrticityAmountAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową kwotę za prąd");
 }
 
-garbage.AmountAdded += GasAmountAdded;
+garbage.AmountAdded += GarbageAmountAdded;
 void GarbageAmountAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową kwotę za śmieci");
 }
 
-sewage.AmountAdded += GasAmountAdded;
+sewage.AmountAdded += SewageAmountAdded;
 void SewageAmountAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową kwotę za ścieki");
 }
 
-rent.AmountAdded += GasAmountAdded;
+rent.AmountAdded += RentAmountAdded;
 void RentAmountAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową kwotę za czynsz");
 }
 
-internet.AmountAdded += GasAmountAdded;
+internet.AmountAdded += InternetAmountAdded;
 void InternetAmountAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową kwotę za internet");
@@ -257,49 +257,50 @@ while (true)
 
 Console.WriteLine("Aby zobaczyć statystyki wpisz literę według poniższej instrukcji:");
 Console.WriteLine("G - gaz; W - woda; P - prąd; Ś - śmieci; S - ścieki; C - czynsz; I - internet");
-Console.WriteLine("Wpisz dowolny znak, żeby zakończyć");
+Console.WriteLine("albo wpisz dowolny inny znak, żeby zakończyć");
 var inputs = Console.ReadLine();
 
-switch(inputs)
+var statistics1 = gas.GetStatistics();
+var statistics2 = water.GetStatistics();
+var statistics3 = electricity.GetStatistics();
+var statistics4 = garbage.GetStatistics();
+var statistics5 = sewage.GetStatistics();
+var statistics6 = rent.GetStatistics();
+var statistics7 = internet.GetStatistics();
+
+switch (inputs)
 {
     case "G":
-        var statistics1 = gas.GetStatistics();
         Console.WriteLine($"Average: {statistics1.Average:N2}");
         Console.WriteLine($"Max: {statistics1.Max}");
         Console.WriteLine($"Min: {statistics1.Min}");
         break;
     case "W":
-        var statistics2 = water.GetStatistics();
         Console.WriteLine($"Average: {statistics2.Average:N2}");
         Console.WriteLine($"Max: {statistics2.Max}");
         Console.WriteLine($"Min: {statistics2.Min}");
         break;
     case "P":
-        var statistics3 = water.GetStatistics();
         Console.WriteLine($"Average: {statistics3.Average:N2}");
         Console.WriteLine($"Max: {statistics3.Max}");
         Console.WriteLine($"Min: {statistics3.Min}");
         break;
     case "Ś":
-        var statistics4 = water.GetStatistics();
         Console.WriteLine($"Average: {statistics4.Average:N2}");
         Console.WriteLine($"Max: {statistics4.Max}");
         Console.WriteLine($"Min: {statistics4.Min}");
         break;
     case "S":
-        var statistics5 = water.GetStatistics();
         Console.WriteLine($"Average: {statistics5.Average:N2}");
         Console.WriteLine($"Max: {statistics5.Max}");
         Console.WriteLine($"Min: {statistics5.Min}");
         break;
     case "C":
-        var statistics6 = water.GetStatistics();
         Console.WriteLine($"Average: {statistics6.Average:N2}");
         Console.WriteLine($"Max: {statistics6.Max}");
         Console.WriteLine($"Min: {statistics6.Min}");
         break;
     case "I":
-        var statistics7 = water.GetStatistics();
         Console.WriteLine($"Average: {statistics7.Average:N2}");
         Console.WriteLine($"Max: {statistics7.Max}");
         Console.WriteLine($"Min: {statistics7.Min}");
