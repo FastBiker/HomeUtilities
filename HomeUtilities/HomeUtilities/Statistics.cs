@@ -18,15 +18,6 @@
             }
         }
 
-        //public float SumAverage 
-        //{
-        //    get 
-        //    {
-        //        this.SumAverage = statics1.Average + 
-        //        return;
-        //    } 
-        //}
-
         public Statistics()
         {
             this.Sum = 0;

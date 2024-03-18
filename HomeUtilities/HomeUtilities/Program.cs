@@ -154,6 +154,7 @@ while (true)
             break;
 
     }
+
     //    if (input == "q")
     //    {
     //        break;
@@ -253,6 +254,7 @@ while (true)
     //    {
     //        Console.WriteLine("Wprowadziłeś niewłaściwą literę");
     //    }
+
 }
 
 Console.WriteLine("Aby zobaczyć statystyki wpisz literę według poniższej instrukcji:");

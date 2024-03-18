@@ -27,12 +27,12 @@ namespace HomeUtilities
             }
             else
             {
-                throw new Exception("Amount value outside the valid range. Entrer an amount using a number equal to or above 0");
+                throw new Exception("Amount value outside the valid range. Enter an amount using a number equal to or above 0");
             }
 
         }
 
-        public override void AddAmount(char amount)
+        public override void AddAmount(char amount) 
         {
             if (float.TryParse(amount.ToString(), out float result))
             {
@@ -56,13 +56,13 @@ namespace HomeUtilities
             }
         }
 
-        public override void AddAmount(int amount)
+        public override void AddAmount(int amount) 
         {
             float valueInFloat = amount;
             this.AddAmount(valueInFloat);
         }
 
-        public override void AddAmount(double amount)
+        public override void AddAmount(double amount) 
         {
             float valueInFloat = (float)amount;
             this.AddAmount(valueInFloat);

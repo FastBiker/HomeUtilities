@@ -25,7 +25,7 @@
             }
             else
             {
-                throw new Exception("Amount value outside the valid range. Entrer an amount using a number equal to or above 0");
+                throw new Exception("Amount value outside the valid range. Enter an amount using a number equal to or above 0");
             }
 
         }
