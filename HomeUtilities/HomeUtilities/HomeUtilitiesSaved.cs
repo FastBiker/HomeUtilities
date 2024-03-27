@@ -1,11 +1,13 @@
 ﻿namespace HomeUtilities
 {
-    public class HomeUtilitiesRent : HomeUtilitiesBase
+    public class HomeUtilitiesSaved : HomeUtilitiesBase
     {
-        private const string fileName = "amounts_rent.txt";
-        public HomeUtilitiesRent(string utilities)
-            : base(utilities)
+        private const string fileName = "_amounts.txt";
+        private string fullFileName;
+        public HomeUtilitiesSaved(string name)
+            : base(name)
         {
+            fullFileName = $"{name}_{fileName}";
         }
 
         public override event AmountAddedDelegate AmountAdded;
@@ -14,7 +16,7 @@
         {
             if (amount >= 0)
             {
-                using (var writer = File.AppendText(fileName))
+                using (var writer = File.AppendText(fullFileName))
                 {
                     writer.WriteLine(amount);
                 }
@@ -76,9 +78,9 @@
         private List<float> ReadAmountsFromFile()
         {
             var amounts = new List<float>();
-            if (File.Exists($"{fileName}"))
+            if (File.Exists($"{fullFileName}"))
             {
-                using (var reader = File.OpenText($"{fileName}"))
+                using (var reader = File.OpenText($"{fullFileName}"))
                 {
                     var line = reader.ReadLine();
                     while (line != null)

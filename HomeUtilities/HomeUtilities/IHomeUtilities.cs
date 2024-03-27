@@ -4,7 +4,7 @@ namespace HomeUtilities
 {
     public interface IHomeUtilities
     {
-        string Utilities { get; }
+        string Name { get; }
         void AddAmount(float amount);
         void AddAmount(char amount);
         void AddAmount(string amount);

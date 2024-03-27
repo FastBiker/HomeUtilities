@@ -4,13 +4,13 @@ Console.WriteLine("Witamy w programie 'Home Utilities' liczącą koszty za zuży
 Console.WriteLine("=====================================");
 Console.WriteLine("Wybierz, za co chcesz wpisać należność");
 
-var gas = new HomeUtilitiesGas("Gas");
-var water = new HomeUtilitiesWater("Water");
-var electricity = new HomeUtilitiesElectricity("Electrycity");
-var garbage = new HomeUtilitiesGarbage("Garbage");
-var sewage = new HomeUtilitiesSewage("Sewage");
-var rent = new HomeUtilitiesRent("Rent");
-var internet = new HomeUtilitiesInternet("Internet");
+var gas = new HomeUtilitiesSaved("Gas");
+var water = new HomeUtilitiesSaved("Water");
+var electricity = new HomeUtilitiesSaved("Electrycity");
+var garbage = new HomeUtilitiesSaved("Garbage");
+var sewage = new HomeUtilitiesSaved("Sewage");
+var rent = new HomeUtilitiesSaved("Rent");
+var internet = new HomeUtilitiesSaved("Internet");
 
 gas.AmountAdded += GasAmountAdded;
 void GasAmountAdded(object sender, EventArgs args)

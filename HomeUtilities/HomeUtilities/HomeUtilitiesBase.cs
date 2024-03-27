@@ -6,12 +6,12 @@
         
         public abstract event AmountAddedDelegate AmountAdded;
 
-        public HomeUtilitiesBase(string utilities)
+        public HomeUtilitiesBase(string name)
         {
-            this.Utilities = utilities;
+            this.Name = name;
         }
 
-        public string Utilities { get; private set; }
+        public string Name { get; private set; }
 
         public abstract void AddAmount(float amount);
 
