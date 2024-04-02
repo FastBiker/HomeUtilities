@@ -6,7 +6,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsGas_ShouldCorrectStatistics()
         {
             //arrange
-            var cash = new HomeUtilitiesGas("Wybuch");
+            var cash = new HomeUtilitiesSaved("Wybuch");
             cash.AddAmount(120);
             cash.AddAmount(1);
             cash.AddAmount(160);
@@ -23,7 +23,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsWater_ShouldCorrectStatistics()
         {
             //arrange
-            var money = new HomeUtilitiesWater("PowódŸ");
+            var money = new HomeUtilitiesSaved("PowódŸ");
             money.AddAmount(45f);
             money.AddAmount("57");
             money.AddAmount('7');
@@ -42,7 +42,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsGarbage_ShouldCorrectStatistics()
         {
             //arrange
-            var garbage = new HomeUtilitiesGarbage("PSZOK");
+            var garbage = new HomeUtilitiesSaved("PSZOK");
             garbage.AddAmount(11);
             garbage.AddAmount(12);
             garbage.AddAmount(25);
@@ -59,7 +59,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsSewage_ShouldCorrectStatistics()
         {
             //arrange
-            var sewage = new HomeUtilitiesSewage("Oczyszczalnia");
+            var sewage = new HomeUtilitiesSaved("Oczyszczalnia");
             sewage.AddAmount(54);
             sewage.AddAmount(96);
             sewage.AddAmount(107);
@@ -76,7 +76,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsElectricty_ShouldCorrectStatistics()
         {
             //arrange
-            var electricity = new HomeUtilitiesElectricity("Ciemnoœæ");
+            var electricity = new HomeUtilitiesSaved("Ciemnoœæ");
             electricity.AddAmount(330);
             electricity.AddAmount(160);
             electricity.AddAmount(133);
@@ -93,7 +93,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsRent_ShouldCorrectStatistics()
         {
             //arrange
-            var rent = new HomeUtilitiesRent("¯o³d");
+            var rent = new HomeUtilitiesSaved("¯o³d");
             rent.AddAmount(2700L);
             rent.AddAmount(2800d);
             rent.AddAmount("3000");
@@ -110,7 +110,7 @@ namespace HomeUtilities.Test
         public void WhenEnterAmountsInternet_ShouldCorrectStatistics()
         {
             //arrange
-            var internet = new HomeUtilitiesInternet("Ciemnoœæ");
+            var internet = new HomeUtilitiesSaved("Okno");
             internet.AddAmount(56);
             internet.AddAmount(79);
             internet.AddAmount(109);
