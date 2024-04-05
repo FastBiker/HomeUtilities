@@ -60,94 +60,31 @@ while (true)
     Console.WriteLine("G - gaz; W - woda; P - prąd; Ś - śmieci; S - ścieki; C - czynsz; I - internet; q - zakończ i przejdź do statystyk");
     var input = Console.ReadLine();
     if (input == "q")
-    { 
-        break; 
+    {
+        break;
     }
-    switch (input) 
+    switch (input)
     {
         case "G":
-            Console.WriteLine("Wprowadź kwotę za gas:");
-            var input1 = Console.ReadLine();
-            try
-            {
-                gas.AddAmount(input1);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("gaz", gas);
             break;
         case "W":
-            Console.WriteLine("Wprowadź kwotę za wodę:");
-            var input2 = Console.ReadLine();
-            try
-            {
-                water.AddAmount(input2);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("wodę", water);
             break;
         case "P":
-            Console.WriteLine("Wprowadź kwotę za prąd:");
-            var input3 = Console.ReadLine();
-            try
-            {
-                electricity.AddAmount(input3);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("prąd", electricity);
             break;
         case "Ś":
-            Console.WriteLine("Wprowadź kwotę za śmieci:");
-            var input4 = Console.ReadLine();
-            try
-            {
-                garbage.AddAmount(input4);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("śmieci", garbage);
             break;
         case "S":
-            Console.WriteLine("Wprowadź kwotę za ścieki:");
-            var input5 = Console.ReadLine();
-            try
-            {
-                sewage.AddAmount(input5);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("ścieki", sewage);
             break;
         case "C":
-            Console.WriteLine("Wprowadź kwotę za czynsz:");
-            var input6 = Console.ReadLine();
-            try
-            {
-                rent.AddAmount(input6);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("czynsz", rent);
             break;
         case "I":
-            Console.WriteLine("Wprowadź kwotę za internet:");
-            var input7 = Console.ReadLine();
-            try
-            {
-                internet.AddAmount(input7);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exceptio catched: {e.Message}");
-            }
+            GetInputAndAddAmount("internet", internet);
             break;
         default:
             Console.WriteLine("Wprowadziłeś niewłaściwą literę");
@@ -161,52 +98,59 @@ Console.WriteLine("G - gaz; W - woda; P - prąd; Ś - śmieci; S - ścieki; C - 
 Console.WriteLine("albo wpisz dowolny inny znak, żeby zakończyć");
 var inputs = Console.ReadLine();
 
-var statistics1 = gas.GetStatistics();
-var statistics2 = water.GetStatistics();
-var statistics3 = electricity.GetStatistics();
-var statistics4 = garbage.GetStatistics();
-var statistics5 = sewage.GetStatistics();
-var statistics6 = rent.GetStatistics();
-var statistics7 = internet.GetStatistics();
+var statisticsGas = gas.GetStatistics();
+var statisticsWater = water.GetStatistics();
+var statisticsElectricity = electricity.GetStatistics();
+var statisticsGarbage = garbage.GetStatistics();
+var statisticsSewage = sewage.GetStatistics();
+var statisticsRent = rent.GetStatistics();
+var statisticsInternet = internet.GetStatistics();
 
 switch (inputs)
 {
     case "G":
-        Console.WriteLine($"Average: {statistics1.Average:N2}");
-        Console.WriteLine($"Max: {statistics1.Max}");
-        Console.WriteLine($"Min: {statistics1.Min}");
+        WriteStatistics(statisticsGas);
         break;
     case "W":
-        Console.WriteLine($"Average: {statistics2.Average:N2}");
-        Console.WriteLine($"Max: {statistics2.Max}");
-        Console.WriteLine($"Min: {statistics2.Min}");
+        WriteStatistics(statisticsWater);
         break;
     case "P":
-        Console.WriteLine($"Average: {statistics3.Average:N2}");
-        Console.WriteLine($"Max: {statistics3.Max}");
-        Console.WriteLine($"Min: {statistics3.Min}");
+        WriteStatistics(statisticsElectricity);
         break;
     case "Ś":
-        Console.WriteLine($"Average: {statistics4.Average:N2}");
-        Console.WriteLine($"Max: {statistics4.Max}");
-        Console.WriteLine($"Min: {statistics4.Min}");
+        WriteStatistics(statisticsGarbage);
         break;
     case "S":
-        Console.WriteLine($"Average: {statistics5.Average:N2}");
-        Console.WriteLine($"Max: {statistics5.Max}");
-        Console.WriteLine($"Min: {statistics5.Min}");
+        WriteStatistics(statisticsSewage);
         break;
     case "C":
-        Console.WriteLine($"Average: {statistics6.Average:N2}");
-        Console.WriteLine($"Max: {statistics6.Max}");
-        Console.WriteLine($"Min: {statistics6.Min}");
+        WriteStatistics(statisticsRent);
         break;
     case "I":
-        Console.WriteLine($"Average: {statistics7.Average:N2}");
-        Console.WriteLine($"Max: {statistics7.Max}");
-        Console.WriteLine($"Min: {statistics7.Min}");
+        WriteStatistics(statisticsInternet);
         break;
     default:
-        Console.WriteLine("Zapraszamy ponownie");
+        Console.WriteLine(value: "Zapraszamy ponownie");
         break;
+}
+
+void GetInputAndAddAmount(string name, HomeUtilitiesSaved utility)
+{
+    Console.WriteLine($"Wprowadź kwotę za {name}:");
+    var input = Console.ReadLine();
+    try
+    {
+        utility.AddAmount(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
+}
+
+static void WriteStatistics(Statistics statistics)
+{
+    Console.WriteLine($"Average: {statistics.Average:N2}");
+    Console.WriteLine($"Max: {statistics.Max}");
+    Console.WriteLine($"Min: {statistics.Min}");
 }
